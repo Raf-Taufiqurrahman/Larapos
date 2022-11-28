@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Apps\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
+});
+
+Route::group(['prefix' => 'app', 'as' => 'app.', 'middleware' => ['auth']], function(){
+    // dashboard route
+    Route::get('/dashboard', DashboardController::class)->name('dashboard');
 });
