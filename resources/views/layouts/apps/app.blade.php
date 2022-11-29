@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>{{ $title }}</title>
+    <title>{{ $title }} - {{ config('app.name') }}</title>
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <meta name="msapplication-TileColor" content="#206bc4" />
     <meta name="theme-color" content="#206bc4" />
@@ -49,11 +49,11 @@
             })
 
             swalWithBootstrapButtons.fire({
-                title: 'Apakah kamu yakin ingin menghapus data ini?',
+                title: 'Are you sure want delete this?',
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Ya, Tolong Hapus!',
-                cancelButtonText: 'Tidak!',
+                confirmButtonText: 'Ya, please!',
+                cancelButtonText: 'Nope!',
                 reverseButtons: true
             }).then((result) => {
                 if (result.value) {
@@ -65,7 +65,7 @@
                     result.dismiss === Swal.DismissReason.cancel
                 ) {
                     swalWithBootstrapButtons.fire(
-                        'Data kamu tetap aman !',
+                        'Your data keep save !',
                         '',
                         'error'
                     )

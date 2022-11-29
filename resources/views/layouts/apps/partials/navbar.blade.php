@@ -4,7 +4,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <a href="." class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pr-0 pr-md-3">
-            <img src="./static/logo-white.svg" alt="Tabler" class="navbar-brand-image">
+            Larapos
         </a>
         <div class="navbar-nav flex-row order-md-last">
             <div class="nav-item dropdown d-none d-md-flex mr-3">
@@ -31,10 +31,10 @@
             </div>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-toggle="dropdown">
-                    <span class="avatar" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                    <span class="avatar" style="background-image: url({{ Auth::user()->avatar }})"></span>
                     <div class="d-none d-xl-block pl-2">
-                        <div>Paweł Kuna</div>
-                        <div class="mt-1 small text-muted">UI Designer</div>
+                        <div>{{ Auth::user()->name }}</div>
+                        <div class="mt-1 small text-muted">{{ Auth::user()->email }}</div>
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
@@ -95,7 +95,7 @@
                             </span>
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown {{ active('app.category*') }}">
                         <a class="nav-link dropdown-toggle" href="#navbar-base" data-toggle="dropdown"
                             role="button" aria-expanded="false">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -118,7 +118,8 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-column">
                             <li>
-                                <a class="dropdown-item" href="">
+                                <a class="dropdown-item {{ active('app.category*') }}"
+                                    href="{{ route('app.category.index') }}">
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                         class="icon icon-tabler icon-tabler-category-2 mr-2" width="24"
                                         height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"

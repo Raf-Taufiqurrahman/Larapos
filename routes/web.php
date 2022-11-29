@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Apps\CategoryController;
 use App\Http\Controllers\Apps\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,4 +22,6 @@ Route::get('/', function () {
 Route::group(['prefix' => 'app', 'as' => 'app.', 'middleware' => ['auth']], function(){
     // dashboard route
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
+    // category route
+    Route::resource('/category', CategoryController::class)->except('create','show','edit');
 });
