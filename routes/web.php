@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Apps\CategoryController;
+use App\Http\Controllers\Apps\CustomerController;
 use App\Http\Controllers\Apps\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,4 +25,6 @@ Route::group(['prefix' => 'app', 'as' => 'app.', 'middleware' => ['auth']], func
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
     // category route
     Route::resource('/category', CategoryController::class)->except('create','show','edit');
+    // customer route
+    Route::resource('/customer', CustomerController::class)->except('create','show','edit');
 });
