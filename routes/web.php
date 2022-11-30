@@ -3,6 +3,7 @@
 use App\Http\Controllers\Apps\CategoryController;
 use App\Http\Controllers\Apps\CustomerController;
 use App\Http\Controllers\Apps\DashboardController;
+use App\Http\Controllers\Apps\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,4 +28,7 @@ Route::group(['prefix' => 'app', 'as' => 'app.', 'middleware' => ['auth']], func
     Route::resource('/category', CategoryController::class)->except('create','show','edit');
     // customer route
     Route::resource('/customer', CustomerController::class)->except('create','show','edit');
+    // product route
+    Route::post('/product/delete-selected', [ProductController::class, 'destroySelected'])->name('product.selected');
+    Route::resource('/product', ProductController::class);
 });
